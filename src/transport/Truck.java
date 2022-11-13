@@ -3,11 +3,43 @@ package transport;
 import java.util.Objects;
 
 public class Truck extends Transport implements Competing {
+    public enum LoadCapacity {
+        N1("с полной массой до 3,5 тонн"),
+        N2("с полной массой свыше 3,5 до 12 тонн"),
+        N3("с полной массой свыше 12 тонн");
 
 
-    public Truck(float engineVolume, String brand, String model) {
+        String loadCapacity;
+
+        LoadCapacity(String loadCapacity) {
+            if (loadCapacity == null || loadCapacity.isBlank()) {
+                this.loadCapacity = "данных по авто недостаточно";
+
+            } else {
+                this.loadCapacity = loadCapacity;
+            }
+        }
+
+        public String getLoadCapacity() {
+            return loadCapacity;
+        }
+
+        public void setLoadCapacity(String loadCapacity) {
+            this.loadCapacity = loadCapacity;
+        }
+
+        @Override
+        public String toString() {
+            return loadCapacity;
+        }
+    }
+
+
+    LoadCapacity loadCapacity;
+
+    public Truck(float engineVolume, String brand, String model, LoadCapacity loadCapacity) {
         super(engineVolume, model, brand);
-
+        this.loadCapacity = loadCapacity;
     }
 
     @Override
@@ -28,7 +60,7 @@ public class Truck extends Transport implements Competing {
 
     @Override
     public void bestLapTime(double d) {
-        System.out.println("лучшее время круга " + getBrand() + " " + getModel() + d+" мин.");
+        System.out.println("лучшее время круга " + getBrand() + " " + getModel() + d + " мин.");
     }
 
     @Override
@@ -38,7 +70,10 @@ public class Truck extends Transport implements Competing {
 
     @Override
     public void Print() {
-        super.Print();
+        System.out.println("Брэнд " + getBrand()
+                + ", модель " + getModel()
+                + ", объём двигателя "
+                + getEngineVolume() + loadCapacity + ".");
     }
 
     @Override

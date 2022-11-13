@@ -3,10 +3,24 @@ package transport;
 import java.util.Objects;
 
 public class PassengerCar extends Transport implements Competing {
+    public enum TapeBody {
+        SEDAN,
+        HATCHBACK,
+        COUPE,
+        WAGON,
+        SUV,
+        CROSSOVER,
+        PICKUP_TRUCK,
+        VAN,
+        MINIVAN;
 
-    public PassengerCar(float engineVolume, String brand, String model) {
+    }
+
+    TapeBody tapeBody;
+
+    public PassengerCar(float engineVolume, String brand, String model, TapeBody tapeBody) {
         super(engineVolume, model, brand);
-
+        this.tapeBody = tapeBody;
     }
 
     @Override
@@ -37,7 +51,11 @@ public class PassengerCar extends Transport implements Competing {
 
     @Override
     public void Print() {
-        super.Print();
+        System.out.println("Брэнд " + getBrand()
+                + ", модель " + getModel()
+                + ", объём двигателя "
+                + getEngineVolume() + " тип кузова - " + tapeBody + ".");
+
     }
 
     public boolean equals(Object o) {

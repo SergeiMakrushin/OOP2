@@ -3,11 +3,45 @@ package transport;
 import java.util.Objects;
 
 public class RacingBus extends Transport implements Competing {
+    public enum Capacyty {
+        EXTRA_SMALL("до 10 мест"),
+        SMALL("до 25 мест"),
+        MEDIUM("40-50 мест"),
+        LARGE("60-80 мест"),
+        EXTRA_LARGE("100-120 мест");
+
+        String capacyty;
+
+        Capacyty(String capacyty) {
+            if (capacyty == null || capacyty.isBlank()) {
+                this.capacyty = "данных по авто недостаточно";
+
+            } else {
+                this.capacyty = capacyty;
+            }
+
+        }
+
+        public String getCapacyty() {
+            return capacyty;
+        }
+
+        public void setCapacyty(String capacyty) {
+            this.capacyty = capacyty;
+        }
+
+        @Override
+        public String toString() {
+            return capacyty;
+        }
+    }
 
 
-    public RacingBus(float engineVolume, String brand, String model) {
+    Capacyty capacyty;
+
+    public RacingBus(float engineVolume, String brand, String model, Capacyty capacyty) {
         super(engineVolume, model, brand);
-
+        this.capacyty = capacyty;
     }
 
 
@@ -35,12 +69,17 @@ public class RacingBus extends Transport implements Competing {
 
     @Override
     public void maximumSpeed(int b) {
+
         System.out.println("Максимальная скорость " + getBrand() + " " + getModel() + b + " км/ч.");
     }
 
     @Override
     public void Print() {
-        super.Print();
+        System.out.println("Брэнд " + getBrand()
+                + ", модель " + getModel()
+                + ", объём двигателя "
+                + getEngineVolume() + " вместимость, " + capacyty + ".");
+
     }
 
     public boolean equals(Object o) {

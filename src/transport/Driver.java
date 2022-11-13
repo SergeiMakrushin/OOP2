@@ -2,17 +2,12 @@ package transport;
 
 import java.util.Objects;
 
-public abstract class Driver<T  extends Transport & Competing> {
+public abstract class Driver<T extends Transport & Competing> {
     private String fullName;
     private String driverLicense;
     private int experience;
 
     public T transport;
-
-
-
-
-
 
 
     public Driver(String fullName, String driverLicense, int experience, T transport) {
@@ -62,6 +57,7 @@ public abstract class Driver<T  extends Transport & Competing> {
             this.experience = experience;
         }
     }
+
     public T getTransport() {
         return transport;
     }
@@ -69,6 +65,7 @@ public abstract class Driver<T  extends Transport & Competing> {
     public void setTransport(T transport) {
         this.transport = transport;
     }
+
     public abstract void startDriving();
 
     public abstract void stop();
