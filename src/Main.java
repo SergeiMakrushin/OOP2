@@ -1,7 +1,7 @@
 import transport.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongLoginException, WrongPasswordException, CantPassDiagnostics {
         System.out.println("Hello world!");
         RacingBus paz = new RacingBus(4.7f, "ПАЗ", "32054", RacingBus.Capacyty.SMALL);
         RacingBus baw = new RacingBus(3.2f, "BAW", "SREET", RacingBus.Capacyty.SMALL);
@@ -48,5 +48,80 @@ public class Main {
         paz.Print();
         gaz.Print();
         lada.Print();
+
+
+        Car laba = new Car(
+                "Lada",
+                "Granta",
+                2015,
+                "России",
+                "жёлтый",
+                1.7f,
+                "автоматическая", "x000xx000",
+                "седан",
+
+                3, "летние",
+                "бензин");
+
+
+        Car audi = new Car(
+                "Audi",
+                "A8 50 L TDI quattro",
+                2020,
+                "Германии",
+                "черный",
+                3.0f,
+                "механическа", "x000xx000",
+                "седан",
+                4,
+                "зимние",
+                "бензин");
+
+        Car bmv = new Car(
+                "BMW",
+                "Z8",
+                2021,
+                "Германии",
+                "черный",
+                3.0f,
+                "робот", "x000xx000",
+                "купе",
+
+                3, "летние",
+                "бензин");
+
+        Car kia = new Car(
+                "Kia",
+                "Sportage 4-го поколения",
+                2018,
+                "Южной Корее",
+                "красный",
+                2.4f,
+                "автоматическа", "x000xx000",
+                "кроссовер",
+                5, "летние",
+                "бензин");
+
+        Car hyundi = new Car(
+                "Hyundai",
+                "Avante",
+                2016,
+                "Южной Корее",
+                "оранжевый",
+                1.6f,
+                "механическая", "x000xx000",
+                "седан",
+
+                4, "зимние",
+                "jhgjg");
+
+
+
+
+        Data olga = new Data("olga", "gdf", "gdf");
+        Data.dataVerification(olga);
+        lada.passDiagnostics();
+        paz.passDiagnostics();
     }
+
 }

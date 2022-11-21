@@ -2,7 +2,7 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car extends Transport {
+public class Car extends Transport implements PassDiagnostic {
 
 
     public static class Key {
@@ -82,8 +82,6 @@ public class Car extends Transport {
     }
 
 
-    // private float engineVolume;
-
     private String transmission;
     private final String body;
     private final int numberSeats;
@@ -95,9 +93,7 @@ public class Car extends Transport {
 
     public Car(String brand, String model, int productionYear, String productionCountry, String color,
                float engineVolume, String transmission, String registrationNumber, String body, int numberSeats, String tyres, String fuel) {
-        super(brand, model, productionYear, productionCountry, color,  engineVolume, fuel);
-
-
+        super(brand, model, productionYear, productionCountry, color, engineVolume, fuel);
 
 
         if (transmission != null || !transmission.isEmpty() || !transmission.isBlank()) {
@@ -149,15 +145,6 @@ public class Car extends Transport {
         return insurance;
     }
 
-
-
-// public float getEngineVolume() {
-//        return engineVolume;
-//    }
-//
-//    public void setEngineVolume(float engineVolume) {
-//        this.engineVolume = engineVolume;
-//    }
 
     public String getBody() {
         return body;
@@ -235,10 +222,11 @@ public class Car extends Transport {
 
     }
 
-    public  void startMoving() {
+    public void startMoving() {
 
     }
-    public  void endMoving () {
+
+    public void endMoving() {
 
     }
 
@@ -270,5 +258,13 @@ public class Car extends Transport {
         } else {
             this.registrationNumber = registrationNumber.toLowerCase();
         }
+    }
+
+    @Override
+    public boolean passDiagnostics() throws CantPassDiagnostics {
+        if (getBody() == null) {
+            System.out.println("fd");
+        }
+        return true;
     }
 }

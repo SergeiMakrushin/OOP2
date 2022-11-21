@@ -17,8 +17,7 @@ public abstract class Transport {
     private float engineVolume;
 
 
-
-    public Transport (float engineVolume, String model,String brand ) {
+    public Transport(float engineVolume, String model, String brand) {
         setBrand(brand);
         setModel(model);
 
@@ -26,8 +25,7 @@ public abstract class Transport {
     }
 
 
-
-    public Transport(String brand, String model, int productionYear, String productionCountry, String color, float  engineVolume, String fuel) {
+    public Transport(String brand, String model, int productionYear, String productionCountry, String color, float engineVolume, String fuel) {
         setBrand(brand);
 
         setModel(model);
@@ -177,6 +175,7 @@ public abstract class Transport {
             this.maxMovementSpeed = Math.abs(maxMovementSpeed);
         }
     }
+
     public float getEngineVolume() {
         return engineVolume;
     }
@@ -192,7 +191,8 @@ public abstract class Transport {
 
 
     public abstract void startMoving();
-    public abstract void endMoving ();
+
+    public abstract void endMoving();
 
     public void Print() {
         System.out.println("Брэнд " + getBrand()
@@ -202,7 +202,7 @@ public abstract class Transport {
     }
 
     @Override
-    public  boolean equals(Object o) {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transport transport = (Transport) o;
@@ -216,7 +216,7 @@ public abstract class Transport {
 
     @Override
     public String toString() {
-        return brand+" " + model;
+        return brand + " " + model;
     }
 }
 

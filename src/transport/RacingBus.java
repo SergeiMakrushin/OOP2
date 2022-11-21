@@ -2,7 +2,7 @@ package transport;
 
 import java.util.Objects;
 
-public class RacingBus extends Transport implements Competing {
+public class RacingBus extends Transport implements Competing, PassDiagnostic {
     public enum Capacyty {
         EXTRA_SMALL("до 10 мест"),
         SMALL("до 25 мест"),
@@ -94,6 +94,12 @@ public class RacingBus extends Transport implements Competing {
     @Override
     public int hashCode() {
         return Objects.hash(getBrand(), getModel(), getEngineVolume());
+    }
+
+    @Override
+    public boolean passDiagnostics() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " в диагностике не требуется");
+        return false;
     }
 }
 

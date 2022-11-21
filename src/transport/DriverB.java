@@ -8,17 +8,17 @@ public class DriverB extends Driver<PassengerCar> {
     }
 
     public void startDriving() {
-        System.out.println(getFullName()+" на "+ getTransport()+ " начал движение");
+        System.out.println(getFullName() + " на " + getTransport() + " начал движение");
 
     }
 
 
     public void stop() {
-        System.out.println(getFullName()+" на "+ getTransport()+ " остановился");
+        System.out.println(getFullName() + " на " + getTransport() + " остановился");
     }
 
     public void refuelingCar() {
-        System.out.println(getFullName()+" на "+ getTransport()+ " заправляет машину");
+        System.out.println(getFullName() + " на " + getTransport() + " заправляет машину");
     }
 
     @Override
@@ -40,6 +40,14 @@ public class DriverB extends Driver<PassengerCar> {
                 ", с категорией " + getDriverLicense() +
                 ", стажем вождения " + getExperience() +
                 " лет управляет автомобилем " + getTransport() + ",  будет участвовать в заезде";
+    }
+
+    public void chekDriverLicense() {
+        if (getDriverLicense() == null || getDriverLicense().isBlank() || !getDriverLicense().equals("B")) {
+
+        }else {
+           throw new RuntimeException("Водитель не может управлять автомобилем");
+        }
     }
 }
 //

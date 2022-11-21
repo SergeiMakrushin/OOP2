@@ -11,7 +11,7 @@ public class Train extends Transport {
 
     public Train(String brand, String model, int productionYear, String productionCountry, int maxMovementSpeed,
                  String nameDepartureStation, String finalStop, int priceTrip, int numberOfWagons, String fuel) {
-        super(brand, model, productionYear, productionCountry, maxMovementSpeed,  fuel);
+        super(brand, model, productionYear, productionCountry, maxMovementSpeed, fuel);
         setPriceTrip(priceTrip);
         setNameDepartureStation(nameDepartureStation);
         setFinalStop(finalStop);
@@ -62,16 +62,14 @@ public class Train extends Transport {
 
     @Override
 
-//public void refill() {
-//        System.out.println("Заправьте дизельное топливо");
-//        }
-    public  void startMoving() {
 
-    }
-    public  void endMoving () {
+    public void startMoving() {
 
     }
 
+    public void endMoving() {
+
+    }
 
 
     @Override

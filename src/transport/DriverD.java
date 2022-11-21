@@ -39,4 +39,11 @@ public class DriverD extends Driver <RacingBus>{
                 ", стажем вождения " + getExperience() +
                 " лет управляет автомобилем " + transport+",  будет участвовать в заезде";
     }
+    public void chekDriverLicense() {
+        if (getDriverLicense() == null || getDriverLicense().isBlank() || !getDriverLicense().equals("D")) {
+
+        }else {
+            throw new RuntimeException("Водитель не может управлять автомобилем");
+        }
+    }
 }

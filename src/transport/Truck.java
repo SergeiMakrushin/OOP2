@@ -2,7 +2,7 @@ package transport;
 
 import java.util.Objects;
 
-public class Truck extends Transport implements Competing {
+public class Truck extends Transport implements Competing, PassDiagnostic {
     public enum LoadCapacity {
         N1("с полной массой до 3,5 тонн"),
         N2("с полной массой свыше 3,5 до 12 тонн"),
@@ -89,5 +89,16 @@ public class Truck extends Transport implements Competing {
     @Override
     public int hashCode() {
         return Objects.hash(getBrand(), getModel(), getEngineVolume());
+    }
+
+    @Override
+    public boolean passDiagnostics() throws CantPassDiagnostics {
+        if (getModel() != null || !getModel().isBlank()) {
+            System.out.println("диагностика пройдена");
+        } else {
+            throw new CantPassDiagnostics("пройдите диагностику");
+        }
+        return false;
+
     }
 }
