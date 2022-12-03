@@ -8,14 +8,14 @@ public class Bus extends Transport {
     }
 
 
-
-
-    public  void startMoving() {
+    public void startMoving() {
 
     }
-    public  void endMoving () {
+
+    public void endMoving() {
 
     }
+
     @Override
     public String toString() {
         return "Автобус " + super.getBrand() +

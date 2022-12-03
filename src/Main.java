@@ -1,5 +1,7 @@
 import transport.*;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) throws WrongLoginException, WrongPasswordException, CantPassDiagnostics {
         System.out.println("Hello world!");
@@ -34,9 +36,11 @@ public class Main {
         isuzu.Print();
         isuzu.startMoving();
         isuzu.endMoving();
+
         DriverB ivnan = new DriverB("Иван", "B", 16, nissan);
         DriverC alexeder = new DriverC("Александр", "C", 5, daf);
         DriverD inna = new DriverD("Инна", "D", 10, simaz);
+
         System.out.println("inna = " + inna);
         System.out.println("ivnan = " + ivnan);
         System.out.println("alexeder = " + alexeder);
@@ -50,78 +54,52 @@ public class Main {
         lada.Print();
 
 
-        Car laba = new Car(
-                "Lada",
-                "Granta",
-                2015,
-                "России",
-                "жёлтый",
-                1.7f,
-                "автоматическая", "x000xx000",
-                "седан",
-
-                3, "летние",
-                "бензин");
-
-
-        Car audi = new Car(
-                "Audi",
-                "A8 50 L TDI quattro",
-                2020,
-                "Германии",
-                "черный",
-                3.0f,
-                "механическа", "x000xx000",
-                "седан",
-                4,
-                "зимние",
-                "бензин");
-
-        Car bmv = new Car(
-                "BMW",
-                "Z8",
-                2021,
-                "Германии",
-                "черный",
-                3.0f,
-                "робот", "x000xx000",
-                "купе",
-
-                3, "летние",
-                "бензин");
-
-        Car kia = new Car(
-                "Kia",
-                "Sportage 4-го поколения",
-                2018,
-                "Южной Корее",
-                "красный",
-                2.4f,
-                "автоматическа", "x000xx000",
-                "кроссовер",
-                5, "летние",
-                "бензин");
-
-        Car hyundi = new Car(
-                "Hyundai",
-                "Avante",
-                2016,
-                "Южной Корее",
-                "оранжевый",
-                1.6f,
-                "механическая", "x000xx000",
-                "седан",
-
-                4, "зимние",
-                "jhgjg");
-
-
-
-
         Data olga = new Data("olga", "gdf", "gdf");
         Data.dataVerification(olga);
         lada.passDiagnostics();
         paz.passDiagnostics();
+
+
+        Transport.getCars().add(daf);
+        Transport.getCars().add(nissan);
+        Transport.getCars().add(simaz);
+        for (Transport cars : Transport.getCars()) {
+            System.out.println(cars);
+        }
+
+        Sponsor alfa = new Sponsor("alfa", 10000);
+        Sponsor betta = new Sponsor("betta", 15000);
+        Sponsor gamma = new Sponsor("gamma", 20000);
+
+        Mechanic igor = new Mechanic<>("Игорь Николаев", "FitServise", daf);
+        Mechanic andrei = new Mechanic<>("Андрей Великолепный", "СТО МАРС", nissan);
+        Mechanic fedor = new Mechanic<>("Фёдор Трёшкин", "MT-Sib", simaz);
+        daf.addDrivers(inna);
+        daf.addMechanic(igor);
+        daf.addMechanic(fedor);
+        daf.addSponsor(alfa);
+        nissan.addDrivers(ivnan);
+        nissan.addMechanic(andrei);
+        nissan.addSponsor(betta);
+        simaz.addDrivers(alexeder);
+        simaz.addMechanic(fedor);
+        simaz.addSponsor(gamma);
+
+        ArrayList<Mechanic> mechanics = daf.getMechanics();
+        for (int i = 0; i < mechanics.size(); i++) {
+            System.out.println(mechanics.get(i));
+        }
+        igor.fixCar();
+        andrei.performMaintenance();
+
+        ServiceStation carMechanic = new ServiceStation<>("Автомеханник");
+        carMechanic.addCarsQueue(simaz);
+        carMechanic.addCarsQueue(nissan);
+        carMechanic.addCarsQueue(daf);
+
+        carMechanic.technicalInspectionCar();
+
+
     }
 
 }

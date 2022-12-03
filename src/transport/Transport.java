@@ -1,5 +1,6 @@
 package transport;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Transport {
@@ -15,13 +16,45 @@ public abstract class Transport {
 
     private int maxMovementSpeed;
     private float engineVolume;
+    public static ArrayList<Transport> cars;
+    private ArrayList<Sponsor> sponsors = new ArrayList<>();
+    private ArrayList<Mechanic> mechanics = new ArrayList<>();
+    private ArrayList<Driver> drivers = new ArrayList<>();
 
+    public void addSponsor(Sponsor sponsor) {
+        sponsors.add(sponsor);
+    }
+
+    public void addDrivers(Driver driver) {
+
+        drivers.add(driver);
+    }
+
+    public void addMechanic(Mechanic mechanic) {
+        mechanics.add(mechanic);
+    }
+    public ArrayList<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public ArrayList<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    public ArrayList<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public static ArrayList<Transport> getCars() {
+        return cars;
+    }
 
     public Transport(float engineVolume, String model, String brand) {
         setBrand(brand);
         setModel(model);
 
         setEngineVolume(engineVolume);
+         cars=new ArrayList<>();
     }
 
 

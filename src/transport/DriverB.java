@@ -50,4 +50,3 @@ public class DriverB extends Driver<PassengerCar> {
         }
     }
 }
-//
