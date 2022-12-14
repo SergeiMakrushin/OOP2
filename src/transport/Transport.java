@@ -1,7 +1,9 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public abstract class Transport {
 
@@ -16,10 +18,29 @@ public abstract class Transport {
 
     private int maxMovementSpeed;
     private float engineVolume;
-    public static ArrayList<Transport> cars;
-    private ArrayList<Sponsor> sponsors = new ArrayList<>();
-    private ArrayList<Mechanic> mechanics = new ArrayList<>();
-    private ArrayList<Driver> drivers = new ArrayList<>();
+    public static HashSet<Transport> cars;
+
+    public static HashSet<Transport> getCars() {
+        return cars;
+    }
+
+    private Set<Sponsor> sponsors = new HashSet<>();
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    private Set<Mechanic> mechanics = new HashSet<>();
+
+    public Set<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
+    private Set<Driver> drivers = new HashSet<>();
+
+    public Set<Driver> getDrivers() {
+        return drivers;
+    }
 
     public void addSponsor(Sponsor sponsor) {
         sponsors.add(sponsor);
@@ -33,28 +54,19 @@ public abstract class Transport {
     public void addMechanic(Mechanic mechanic) {
         mechanics.add(mechanic);
     }
-    public ArrayList<Sponsor> getSponsors() {
-        return sponsors;
-    }
 
-    public ArrayList<Mechanic> getMechanics() {
-        return mechanics;
-    }
 
-    public ArrayList<Driver> getDrivers() {
-        return drivers;
-    }
 
-    public static ArrayList<Transport> getCars() {
-        return cars;
-    }
+
+
+
 
     public Transport(float engineVolume, String model, String brand) {
         setBrand(brand);
         setModel(model);
 
         setEngineVolume(engineVolume);
-         cars=new ArrayList<>();
+         cars=new HashSet<>();
     }
 
 
