@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class SetIntegers {
+public class SetInteger {
 
 
     public static final Set<Integer> number = new HashSet<>();

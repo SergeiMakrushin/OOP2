@@ -31,7 +31,7 @@ public class Multiplication {
             }
         }
         System.out.println(tasks);
-   }
+    }
 
 }
 

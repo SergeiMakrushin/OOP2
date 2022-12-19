@@ -1,12 +1,14 @@
 package Product;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Recipe {
 
-    private Set<Product> foodstuffs = new HashSet<Product>();
+
+    private HashMap<String, Double> recipeCard = new HashMap<>();
     private double sumPriceProduct;
     private String title;
 
@@ -15,30 +17,20 @@ public class Recipe {
         this.sumPriceProduct = 0;
     }
 
+    public void makeRecipeCard(Product product) {
 
-    public void makeRecipe(Product product) {
-        if (foodstuffs.contains(product)) {
-            throw new RuntimeException("Такой продукт уже есть");
-        }
-        foodstuffs.add(product);
+        recipeCard.put(product.getTitle(), product.getQuantity());
         sumPriceProduct = sumPriceProduct + product.getPrice() * product.getQuantity();
     }
 
 
     public void printSet() {
-        for (Product product :foodstuffs
-             ) {
-            System.out.println(product);
-
-        }
+        recipeCard.forEach(
+                (key, value)
+                        -> System.out.println(key + " - " + value + " кг."));
 
     }
 
-
-
-    public Set<Product> getFoodstuffs() {
-        return foodstuffs;
-    }
 
     public double getSumPriceProduct() {
         return sumPriceProduct;

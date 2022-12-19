@@ -7,8 +7,8 @@ public class Product {
 
 
     private String title;
-    private double price;
-    private double quantity;
+    private Double price;
+    private Double quantity;
 
 
     public static LinkedList<Product> products=new LinkedList<Product>();
@@ -32,7 +32,7 @@ public class Product {
 
 
 
-    public Product(String title, double price, double quantity) {
+    public Product(String title, Double price, Double quantity) {
         setTitle(title);
         setPrice(price);
         setQuantity(quantity);
@@ -52,11 +52,11 @@ public class Product {
 
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         if (price == 0) {
             throw new RuntimeException("Заполните карточку товара полностью");
         } else {
@@ -65,13 +65,13 @@ public class Product {
 
     }
 
-    public double getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
-        if (quantity == 0) {
-            throw new RuntimeException("Заполните карточку товара полностью");
+    public void setQuantity(Double quantity) {
+        if (quantity == 0||quantity==null) {
+            this.quantity=1.0;
         } else {
             this.quantity = quantity;
         }

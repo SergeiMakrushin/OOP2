@@ -1,13 +1,15 @@
 import Product.Product;
 import Product.Recipe;
-import Product.SetIntegers;
+import Product.SetInteger;
 import transport.*;
 import Product.*;
 
-import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static Product.Passport.getPassportByPassportNumber;
-import static Product.Passport.passports;
 
 public class Main {
     public static void main(String[] args) throws WrongLoginException, WrongPasswordException, CantPassDiagnostics {
@@ -105,15 +107,15 @@ public class Main {
         carMechanic.technicalInspectionCar();
         System.out.println(daf.getMechanics());
 
-        Product banans = new Product("Бананы", 95, 2);
-        Product apples = new Product("Яблоки", 150, 1.5);
-        Product cherry = new Product("Вишня", 250, 0.9);
-        Product tomato = new Product("Помидоры", 140, 1);
-        Product potato = new Product("Картофель", 20, 3);
-        Product egg = new Product("Яйцо", 60, 2);
-        Product milk = new Product("Молоко", 80, 1);
-        Product cookies = new Product("Печенье", 100, 1);
-        Product bread = new Product("Хлеб", 40, 1);
+        Product banans = new Product("Бананы", 95.0, 0.0);
+        Product apples = new Product("Яблоки", 150.0, 1.5);
+        Product cherry = new Product("Вишня", 250.0, 0.9);
+        Product tomato = new Product("Помидоры", 140.0, 1.0);
+        Product potato = new Product("Картофель", 20.0, 3.0);
+        Product egg = new Product("Яйцо", 60.0, 2.0);
+        Product milk = new Product("Молоко", 80.0, 1.0);
+        Product cookies = new Product("Печенье", 100.0, 1.0);
+        Product bread = new Product("Хлеб", 40.0, 1.0);
 
         Product.addProduct(banans);
         Product.addProduct(apples);
@@ -125,32 +127,32 @@ public class Main {
             System.out.println(products);
         }
         Recipe r1 = new Recipe("r1");
-        r1.makeRecipe(banans);
-        r1.makeRecipe(apples);
-        r1.makeRecipe(cherry);
+        r1.makeRecipeCard(banans);
+        r1.makeRecipeCard(apples);
+        r1.makeRecipeCard(cherry);
         System.out.println("***********");
         System.out.println(" рецепт 1  ");
-     r1.printSet();
+        r1.printSet();
         System.out.println("r1 = " + r1);
 
         Recipe t1 = new Recipe("t1");
-        t1.makeRecipe(tomato);
-        t1.makeRecipe(potato);
+        t1.makeRecipeCard(tomato);
+        t1.makeRecipeCard(potato);
 
         System.out.println(" рецепт 2 ");
         t1.printSet();
         System.out.println("t1 = " + t1);
 
         Recipe g3 = new Recipe("g3");
-        g3.makeRecipe(apples);
-        g3.makeRecipe(potato);
-        g3.makeRecipe(cherry);
+        g3.makeRecipeCard(apples);
+        g3.makeRecipeCard(potato);
+        g3.makeRecipeCard(cherry);
         System.out.println(" рецепт 3 ");
-                g3.printSet();
+        g3.printSet();
         System.out.println("g3 = " + g3);
 
         System.out.println(" **************");
-        SetIntegers.oddSet(SetIntegers.number);
+        SetInteger.oddSet(SetInteger.number);
 
         Multiplication.fd();
 
@@ -163,13 +165,126 @@ public class Main {
         Passport foor = new Passport(456951, "Mag", "Tag", null, "25.07.1993");
         Passport.addPassport(foor);
 
-        for (Passport passport: Passport.getPassports()
-             ) {
+        for (Passport passport : Passport.getPassports()
+        ) {
             System.out.println(passport);
         }
 
         getPassportByPassportNumber(123789);
+        System.out.println("*************************");
 
+
+        TelephoneDirectory n1 = new TelephoneDirectory("Иван Иванов", "8-(383)-89523657");
+        TelephoneDirectory n2 = new TelephoneDirectory("Иван Петров", "8-(383)-89523658");
+        TelephoneDirectory n3 = new TelephoneDirectory("Иван Зайцев", "8-(383)-89523659");
+        TelephoneDirectory n4 = new TelephoneDirectory("Иван Сидоров", "8-(383)-89523654");
+        TelephoneDirectory n5 = new TelephoneDirectory("Иван Котов", "8-(383)-89523655");
+        TelephoneDirectory n6 = new TelephoneDirectory("Иван Морской", "8-(383)-89523656");
+        TelephoneDirectory n7 = new TelephoneDirectory("Иван Угрюмый", "8-(383)-89523651");
+        TelephoneDirectory n8 = new TelephoneDirectory("Иван Веселов", "8-(383)-89523652");
+        TelephoneDirectory n9 = new TelephoneDirectory("Иван Шмыга", "8-(383)-89523653");
+        TelephoneDirectory n10 = new TelephoneDirectory("Дмитрий Петров", "7-(383)-89523657");
+        TelephoneDirectory n11 = new TelephoneDirectory("Дмитрий Зайцев", "9-(383)-89523657");
+        TelephoneDirectory n12 = new TelephoneDirectory("Дмитрий Тихий", "10-(383)-89523657");
+        TelephoneDirectory n13 = new TelephoneDirectory("Дмитрий Легин", "3-(383)-89523657");
+        TelephoneDirectory n14 = new TelephoneDirectory("Дмитрий Бобров", "2-(383)-89523657");
+        TelephoneDirectory n15 = new TelephoneDirectory("Дмитрий Котов", "1-(383)-89523657");
+        TelephoneDirectory n16 = new TelephoneDirectory("Дмитрий Зайцев", "6-(383)-89523657");
+        TelephoneDirectory n17 = new TelephoneDirectory("Дмитрий Иванов", "5-(383)-89523657");
+        TelephoneDirectory n18 = new TelephoneDirectory("Дмитрий Колита", "4-(383)-89523657");
+        TelephoneDirectory n19 = new TelephoneDirectory("Борис Грызлов", "20-(383)-89523657");
+        TelephoneDirectory n20 = new TelephoneDirectory("Борис Попов", "17-(383)-89523657");
+        TelephoneDirectory.setListSubscribers(n1);
+        TelephoneDirectory.setListSubscribers(n2);
+        TelephoneDirectory.setListSubscribers(n3);
+        TelephoneDirectory.setListSubscribers(n4);
+        TelephoneDirectory.setListSubscribers(n5);
+        TelephoneDirectory.setListSubscribers(n6);
+        TelephoneDirectory.setListSubscribers(n7);
+        TelephoneDirectory.setListSubscribers(n8);
+        TelephoneDirectory.setListSubscribers(n9);
+        TelephoneDirectory.setListSubscribers(n10);
+        TelephoneDirectory.setListSubscribers(n11);
+        TelephoneDirectory.setListSubscribers(n12);
+        TelephoneDirectory.setListSubscribers(n13);
+        TelephoneDirectory.setListSubscribers(n14);
+        TelephoneDirectory.setListSubscribers(n15);
+        TelephoneDirectory.setListSubscribers(n16);
+        TelephoneDirectory.setListSubscribers(n17);
+        TelephoneDirectory.setListSubscribers(n18);
+        TelephoneDirectory.setListSubscribers(n19);
+        TelephoneDirectory.setListSubscribers(n20);
+
+        TelephoneDirectory.print();
+
+        System.out.println("*************************");
+
+        SimpleMap sea = new SimpleMap("море", 2);
+        SimpleMap ball = new SimpleMap("мяч", 3);
+        SimpleMap horse = new SimpleMap("конь", 4);
+        SimpleMap field = new SimpleMap("Поле", 1);
+        SimpleMap slep = new SimpleMap("сон", 7);
+        SimpleMap.setSimpleMap(sea);
+        SimpleMap.setSimpleMap(ball);
+        SimpleMap.setSimpleMap(horse);
+        SimpleMap.setSimpleMap(field);
+        SimpleMap.setSimpleMap(slep);
+
+        SimpleMap.print();
+        System.out.println("*******************");
+
+        List<Integer> a = new LinkedList<>();
+        MapList.oddList(a);
+        for (Integer integr : a) {
+            System.out.println(integr);
+        }
+        List<Integer> b = new LinkedList<>();
+        MapList.oddList(b);
+        List<Integer> c = new LinkedList<>();
+        MapList.oddList(c);
+        List<Integer> d = new LinkedList<>();
+        MapList.oddList(d);
+        List<Integer> f = new LinkedList<>();
+        MapList.oddList(f);
+
+        String aa = "aa";
+        String bb = "bb";
+        String cc = "cc";
+        String dd = "dd";
+        String ff = "ff";
+
+        MapList.putMap(aa, a);
+        MapList.putMap(bb, b);
+        MapList.putMap(cc, c);
+        MapList.putMap(dd, d);
+        MapList.putMap(ff, f);
+        System.out.println("MapList.getSong() = " + MapList.getSong());
+
+        MapList.putNewSong();
+
+        System.out.println("*******************");
+
+        NewMap a1 = new NewMap(1, "слон");
+        NewMap a2 = new NewMap(2, "бегемот");
+        NewMap a3 = new NewMap(3, "кот");
+        NewMap a4 = new NewMap(4, "собака");
+        NewMap a5 = new NewMap(5, "аист");
+        NewMap a6 = new NewMap(6, "улитка");
+        NewMap a7 = new NewMap(7, "лосось");
+        NewMap a8 = new NewMap(8, "курица");
+        NewMap a9 = new NewMap(9, "хорек");
+        NewMap a10 = new NewMap(10, "ёж");
+        NewMap.setValores(a1);
+        NewMap.setValores(a2);
+        NewMap.setValores(a3);
+        NewMap.setValores(a4);
+        NewMap.setValores(a5);
+        NewMap.setValores(a6);
+        NewMap.setValores(a7);
+        NewMap.setValores(a8);
+        NewMap.setValores(a9);
+        NewMap.setValores(a10);
+        NewMap.Print();
 
 
     }
